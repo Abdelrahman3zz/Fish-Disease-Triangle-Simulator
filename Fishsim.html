@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquatic Disease Triangle Simulator</title>
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --light-blue: #eff6ff;
+            --env-color: rgba(59, 130, 246, 0.7); /* Blue */
+            --host-color: rgba(14, 165, 233, 0.7); /* Light Blue/Cyan */
+            --path-color: rgba(99, 102, 241, 0.7); /* Indigo */
+            --healthy: #10b981;
+            --stress: #f59e0b;
+            --outbreak: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Venn Diagram Section */
+        .venn-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--light-blue);
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            mix-blend-mode: multiply;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease;
+        }
+
+        #circ-env { background-color: var(--env-color); transform: translate(0, -30px); z-index: 2; }
+        #circ-host { background-color: var(--host-color); transform: translate(-40px, 30px); z-index: 1; }
+        #circ-path { background-color: var(--path-color); transform: translate(40px, 30px); z-index: 3; }
+
+        /* Status Bar */
+        .status-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        #status-text {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin: 10px 0;
+            color:
